@@ -27,5 +27,4 @@ public class BookingEntity {
     private Integer duringDay;
     @Column(name = "booking_price")
     private Double bookingPrice;
-
 }

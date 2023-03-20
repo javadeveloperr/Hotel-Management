@@ -7,13 +7,18 @@
         <property name="hibernate.connection.password">root123</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Asaka</property>
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
 
         <!-- MAPPINGS -->
-        <mapping class="org.example.entity.BookEntity"/>
-        <mapping class="org.example.entity.StudentEntity"/>
-        <mapping class="org.example.entity.AddressEntity"/>
+        <mapping class="org.example.entity.BookingEntity"/>
+        <mapping class="org.example.entity.CleanedRoom"/>
+        <mapping class="org.example.entity.ComfortEntity"/>
+        <mapping class="org.example.entity.EmployeeEntity"/>
+        <mapping class="org.example.entity.GuestEntity"/>
+        <mapping class="org.example.entity.PassportEntity"/>
+        <mapping class="org.example.entity.Petition"/>
+        <mapping class="org.example.entity.RoomEntity"/>
     </session-factory>
 
 </hibernate-configuration>
