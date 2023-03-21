@@ -71,8 +71,8 @@ public class MenuController {
             action = action();
             switch (action) {
                 case 1 -> roomController.addRoom();
-                case 2 -> convenient();
-                case 3 -> employeeType();
+                case 2 -> roomController.getRoomList();
+                case 3 -> roomController.delete();
                 case 4 -> employee();
                 case 5 -> guest();
                 case 6 -> booking();

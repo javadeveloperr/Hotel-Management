@@ -31,4 +31,15 @@ public class RoomController {
         room.setArea(area);
         roomService.addRoom(room);
     }
+
+    public void getRoomList() {
+        System.out.println("Room List : ");
+        System.out.println(roomService.roomList());
+    }
+
+    public void delete() {
+        System.out.println("Enter room id : ");
+        Integer id=ScannerUtil.IntScanner.nextInt();
+        roomService.deleteRoom(id);
+    }
 }
