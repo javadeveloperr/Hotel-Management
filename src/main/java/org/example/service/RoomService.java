@@ -28,10 +28,32 @@ public class RoomService {
 
     public void deleteRoom(Integer id) {
         RoomEntity room = roomRepository.getRoomById(id);
-        if (room==null){
+        if (room==null) {
             System.out.println("Room Not exists. Check id");
             return;
         }
         roomRepository.deleteRoomById(id);
+    }
+
+    public void updateRoom(RoomEntity room) {
+        RoomEntity room1 = roomRepository.getRoomById(room.getId());
+        if (room==null) {
+            System.out.println("Room Not exists. Check id");
+            return;
+        }
+        roomRepository.updateRoomById(room);
+    }
+
+    public RoomEntity getRoom(Integer id) {
+        RoomEntity room = roomRepository.getRoomById(id);
+        if (room==null) {
+            System.out.println("Room Not exists. Check id");
+            return null;
+        }
+        return room;
+    }
+
+    public void roomCon(Integer id, Integer conId) {
+        roomRepository.updateRoomConId(id,conId);
     }
 }

@@ -1,5 +1,6 @@
 package org.example.repository;
 
+import org.example.entity.ComfortEntity;
 import org.example.entity.RoomEntity;
 import org.example.mapper.RoomMapper;
 import org.hibernate.Session;
@@ -53,10 +54,46 @@ public class RoomRepository {
         query.setParameter("id", id);
         int rowCount = query.executeUpdate();
         tx.commit();
-        if (rowCount==1){
+        if (rowCount == 1) {
             System.out.println("deleted");
             return;
         }
 
+    }
+
+    public void updateRoomById(RoomEntity room1) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        RoomEntity room = session.get(RoomEntity.class, room1.getId());
+        room.setNumber(room1.getNumber());
+        room.setType(room1.getType());
+        room.setArea(room1.getArea());
+        room.setPrice(room1.getPrice());
+        room.setFloor(room1.getFloor());
+        session.update(room);
+        transaction.commit();
+//        Query query = session.createQuery("update room r set r.number=: WHERE id = :id");
+//        query.setParameter("id", roomm.getId());
+//        int rowCount = query.executeUpdate();
+//        tx.commit();
+//        if (rowCount==1){
+//            System.out.println("deleted");
+//            return;
+//        }
+    }
+
+    public void updateRoomConId(Integer roomId, Integer conId) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        RoomEntity room = session.get(RoomEntity.class, roomId);
+        ComfortEntity comfort = getComfort(conId);
+        room.setComfortId(comfort);
+        session.update(room);
+        transaction.commit();
+    }
+    public ComfortEntity getComfort(Integer id) {
+        Session session = sessionFactory.openSession();
+        ComfortEntity entity = session.find(ComfortEntity.class, id);
+        return entity;
     }
 }

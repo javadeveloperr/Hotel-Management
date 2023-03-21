@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 public class MenuController {
     @Autowired
     private RoomController roomController;
+    @Autowired
+    private EmployeeController employeeController;
+
     public static Integer action() {
         System.out.println("Select menu : ");
         return ScannerUtil.IntScanner.nextInt();
@@ -30,6 +33,7 @@ public class MenuController {
             }
         }
     }
+
     public void adminMenu() {
         System.out.println("1. Room\n+" +
                 "2. Convenient (qulayliklar)\n" +
@@ -58,13 +62,15 @@ public class MenuController {
             }
         }
     }
-    public void room(){
+
+    public void room() {
         System.out.println("1. Add room\n" +
                 "2. List rooms\n" +
                 "3. Delete room\n" +
                 "4. Update room\n" +
                 "5. Find room\n" +
-                "6. Room convenient\n");
+                "6. Room convenient\n" +
+                "0. Back");
         Boolean b = true;
         while (b) {
             int action;
@@ -73,48 +79,69 @@ public class MenuController {
                 case 1 -> roomController.addRoom();
                 case 2 -> roomController.getRoomList();
                 case 3 -> roomController.delete();
-                case 4 -> employee();
-                case 5 -> guest();
-                case 6 -> booking();
-                case 7 -> outcome();
-                case 8 -> tozalangan();
-                case 9 -> arz();
+                case 4 -> roomController.update();
+                case 5 -> roomController.find();
+                case 6 -> roomController.roomConvenient();
                 case 0 -> b = false;
             }
         }
     }
-    public void convenient(){
+
+    public void convenient() {
         System.out.println("1. Add\n" +
                 "2. List\n" +
                 "3. Delete\n");
     }
-    public void employeeType(){
+
+    public void employeeType() {
         System.out.println("1. Add\n" +
                 "2. List\n" +
                 "3. Delete\n");
     }
-    public void employee(){
+
+    public void employee() {
         System.out.println("1. Add\n" +
                 "2. List\n" +
-                "3. Delete\n");}
-    public void guest(){
+                "3. Delete\n" +
+                "0. Back");
+        Boolean b = true;
+        while (b) {
+            int action;
+            action = action();
+            switch (action) {
+                case 1 -> employeeController.addEmployee();
+                case 2 -> roomController.getRoomList();
+                case 3 -> roomController.delete();
+                case 4 -> roomController.update();
+                case 5 -> roomController.find();
+                case 6 -> roomController.roomConvenient();
+                case 0 -> b = false;
+            }
+        }
+    }
+
+    public void guest() {
         System.out.println("1. Add \n" +
                 "2. List");
 
     }
-    public void booking(){
+
+    public void booking() {
         System.out.println("1. Make booking\n" +
                 "2. List\n" +
                 "3. List by room\n" +
                 "4. List by guest\n");
     }
-    public void outcome(){
+
+    public void outcome() {
 
     }
-    public void tozalangan(){
+
+    public void tozalangan() {
 
     }
-    public void arz(){
+
+    public void arz() {
 
     }
 }
