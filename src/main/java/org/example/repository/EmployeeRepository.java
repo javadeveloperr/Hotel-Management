@@ -19,6 +19,6 @@ public class EmployeeRepository {
 
     public void addEmployee(EmployeeEntity employeeEntity) {
         Session session= sessionFactory.openSession();
-        session.i
+        session.
     }
 }
