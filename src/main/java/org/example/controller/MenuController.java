@@ -10,6 +10,8 @@ public class MenuController {
     private RoomController roomController;
     @Autowired
     private EmployeeController employeeController;
+    @Autowired
+    private GuestController guestController;
 
     public static Integer action() {
         System.out.println("Select menu : ");
@@ -110,11 +112,8 @@ public class MenuController {
             action = action();
             switch (action) {
                 case 1 -> employeeController.addEmployee();
-                case 2 -> roomController.getRoomList();
-                case 3 -> roomController.delete();
-                case 4 -> roomController.update();
-                case 5 -> roomController.find();
-                case 6 -> roomController.roomConvenient();
+                case 2 -> employeeController.getEmployeeList();
+                case 3 -> employeeController.delete();
                 case 0 -> b = false;
             }
         }
@@ -122,8 +121,18 @@ public class MenuController {
 
     public void guest() {
         System.out.println("1. Add \n" +
-                "2. List");
-
+                "2. List" +
+                "0. Back");
+        Boolean b = true;
+        while (b) {
+            int action;
+            action = action();
+            switch (action) {
+                case 1 -> guestController.addGuest();
+                case 2 -> guestController.getGuestList();
+                case 0 -> b = false;
+            }
+        }
     }
 
     public void booking() {

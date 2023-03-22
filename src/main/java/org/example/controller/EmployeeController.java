@@ -34,4 +34,15 @@ public class EmployeeController {
         employeeEntity.setType(String.valueOf(employeeStatuses[typeId]));
         employeeService.addEmp(employeeEntity);
     }
+
+    public void getEmployeeList() {
+        System.out.println("Employee List : ");
+        System.out.println(employeeService.employeeList());
+    }
+
+    public void delete() {
+        System.out.println("Enter room id : ");
+        Integer id=ScannerUtil.IntScanner.nextInt();
+        employeeService.deleteRoom(id);
+    }
 }

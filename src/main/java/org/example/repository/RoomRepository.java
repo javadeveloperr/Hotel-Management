@@ -58,7 +58,6 @@ public class RoomRepository {
             System.out.println("deleted");
             return;
         }
-
     }
 
     public void updateRoomById(RoomEntity room1) {
